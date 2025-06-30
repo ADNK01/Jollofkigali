@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jollof Kigali - Restaurant Nigérian Authentique à Kigali</title>
+    <meta name="description" content="Saveurs authentiques du Nigeria au cœur de Kigali. Restaurant Jollof Kigali - Remera. Réservation: +250 788 500 171">
+    
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #C14242;
+            --jungle-green: #2D5A3D;
+            --golden-ochre: #E6A756;
+            --warm-white: #FAF9F6;
+            --warm-gray: #8B7D6B;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--warm-white);
+            color: #333;
+        }
+        
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        
+        .bg-primary { background-color: var(--primary-red); }
+        .bg-jungle { background-color: var(--jungle-green); }
+        .bg-golden { background-color: var(--golden-ochre); }
+        .text-primary { color: var(--primary-red); }
+        .text-jungle { color: var(--jungle-green); }
+        .text-golden { color: var(--golden-ochre); }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(193, 66, 66, 0.7), rgba(45, 90, 61, 0.7)),
+                        url('https://rwanda.tortoisepath.com/wp-content/uploads/2024/04/Jollof-Kigali-Kigali-Rwanda-TortoisePathcom-5-jpeg.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background-color: #A63535;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(193, 66, 66, 0.3);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--jungle-green);
+            color: var(--jungle-green);
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--jungle-green);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .menu-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            background-color: #f9f9f9;
+            padding-left: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            margin: 5px;
+            border: 2px solid var(--golden-ochre);
+            background: transparent;
+            color: var(--golden-ochre);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--golden-ochre);
+            color: white;
+        }
+        
+        .testimonial {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-red);
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--jungle-green);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-red);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(193, 66, 66, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .rating {
+            color: var(--golden-ochre);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 px-4 py-3">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-playfair font-bold text-jungle">
+                <i class="fas fa-utensils mr-2"></i>Jollof Kigali
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-jungle hover:text-primary transition-colors">Accueil</a>
+                <a href="#apropos" class="text-jungle hover:text-primary transition-colors">À propos</a>
+                <a href="#menu" class="text-jungle hover:text-primary transition-colors">Menu</a>
+                <a href="#galerie" class="text-jungle hover:text-primary transition-colors">Galerie</a>
+                <a href="#contact" class="text-jungle hover:text-primary transition-colors">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://www.instagram.com/jollofkigali/" class="text-jungle hover:text-primary">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <span class="text-sm bg-golden text-white px-3 py-1 rounded-full">FR | EN</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-bg min-h-screen flex items-center">
+        <div class="container mx-auto px-4 text-center text-white">
+            <div class="fade-in">
+                <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-6">
+                    Jollof Kigali
+                </h1>
+                <p class="text-xl md:text-2xl mb-4 font-montserrat">
+                    Saveurs authentiques du Nigeria au cœur de Kigali
+                </p>
+                <p class="text-lg mb-8 opacity-90">
+                    Depuis 2019, nous apportons la tradition culinaire nigériane à Remera
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-calendar-alt mr-2"></i>Réserver une table
+                    </a>
+                    <a href="#menu" class="btn-outline">
+                        <i class="fas fa-book-open mr-2"></i>Découvrir notre menu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À Propos -->
+    <section id="apropos" class="py-20 bg-warm-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title font-playfair">Notre Histoire</h2>
+                <p class="text-lg text-warm-gray max-w-3xl mx-auto">
+                    Une aventure culinaire qui a commencé par la passion de partager les saveurs authentiques du Nigeria
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <img src="https://rwanda.tortoisepath.com/wp-content/uploads/2024/04/Jollof-Kigali-Kigali-Rwanda-TortoisePathcom-2-jpeg.webp" 
+                         alt="Restaurant Jollof Kigali - Intérieur" 
+                         class="w-full rounded-lg shadow-lg">
+                </div>
+                <div class="fade-in">
+                    <h3 class="text-3xl font-playfair font-bold text-jungle mb-6">Depuis 2019</h3>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        Jollof Kigali a débuté comme un service de livraison exclusif sur Instagram, répondant à la demande croissante 
+                        de cuisine nigériane authentique à Kigali. Après une année de succès, nous avons ouvert notre restaurant 
+                        physique à Remera en 2020.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-home text-primary text-xl mr-4"></i>
+                            <span><strong>Famille :</strong> Atmosphère accueillante comme à la maison</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-handshake text-primary text-xl mr-4"></i>
+                            <span><strong>Convivialité :</strong> Service personnalisé et chaleureux</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-heart text-primary text-xl mr-4"></i>
+                            <span><strong>Authenticité :</strong> Recettes traditionnelles nigérianes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-music text-primary text-xl mr-4"></i>
+                            <span><strong>Ambiance :</strong> Musique nigériane et décoration africaine moderne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title font-playfair">Notre Menu</h2>
+                <p class="text-lg text-warm-gray">Découvrez nos spécialités nigérianes préparées avec amour</p>
+            </div>
+            
+            <div class="text-center mb-8 fade-in">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-utensils mr-2"></i>Tous
+                </button>
+                <button class="filter-btn" data-filter="jollof">
+                    <i class="fas fa-star mr-2"></i>Jollof Rice
+                </button>
+                <button class="filter-btn" data-filter="soupes">
+                    <i class="fas fa-fire mr-2"></i>Soupes
+                </button>
+                <button class="filter-btn" data-filter="grillades">
+                    <i class="fas fa-drumstick-bite mr-2"></i>Grillades
+                </button>
+                <button class="filter-btn" data-filter="vegetarien">
+                    <i class="fas fa-leaf mr-2"></i>Végétarien
+                </button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Jollof Rice Spécialité -->
+                <div class="card menu-item-card" data-category="jollof">
+                    <img src="https://www.theeastafrican.co.ke/resource/image/3583430/portrait_ratio1x1/1600/1600/c1629fb308559d7e5b552ff981524658/Tw/jollof-rice.jpg" 
+                         alt="Jollof Rice Signature" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-montserrat font-bold text-jungle">Jollof Rice Signature</h3>
+                            <span class="text-primary font-bold">12,000 FRW</span>
+                        </div>
+                        <p class="text-warm-gray mb-3">
+                            Notre spécialité maison : riz parfumé aux épices nigérianes, tomates fraîches et viande tendre
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="text-golden text-sm"><i class="fas fa-star"></i> Spécialité du chef</span>
+                            <span class="text-red-500 text-sm"><i class="fas fa-pepper-hot"></i> Épicé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pepper Soup -->
+                <div class="card menu-item-card" data-category="soupes">
+                    <img src="https://rwanda.tortoisepath.com/wp-content/uploads/2024/04/Jollof-Kigali-Kigali-Rwanda-TortoisePathcom-3-jpeg.webp" 
+                         alt="Pepper Soup" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-montserrat font-bold text-jungle">Pepper Soup Assortie</h3>
+                            <span class="text-primary font-bold">8,500 FRW</span>
+                        </div>
+                        <p class="text-warm-gray mb-3">
+                            Soupe traditionnelle épicée aux viandes variées et légumes frais
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="text-red-500 text-sm"><i class="fas fa-fire"></i> Très épicé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Asun -->
+                <div class="card menu-item-card" data-category="grillades">
+                    <img src="https://www.newtimes.co.rw/uploads/imported_images/files/main/articles/2022/03/30/a-client-during-the-lunch-time-while-enjoying-jollof-rice-and-chicken-meat-at-jollof-kigali-a-nigerian-cuisine-restaurant-.craish-bahizi.jpg" 
+                         alt="Asun Grillé" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-montserrat font-bold text-jungle">Asun Épicé</h3>
+                            <span class="text-primary font-bold">15,000 FRW</span>
+                        </div>
+                        <p class="text-warm-gray mb-3">
+                            Viande de chèvre grillée aux épices nigérianes, un délice pour les amateurs de saveurs fortes
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="text-golden text-sm"><i class="fas fa-star"></i> Spécialité</span>
+                            <span class="text-red-500 text-sm"><i class="fas fa-pepper-hot"></i> Très épicé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Okro Soup -->
+                <div class="card menu-item-card" data-category="soupes vegetarien">
+                    <img src="https://rwanda.tortoisepath.com/wp-content/uploads/2024/04/Jollof-Kigali-Kigali-Rwanda-TortoisePathcom-14-jpeg.webp" 
+                         alt="Okro Soup" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-montserrat font-bold text-jungle">Okro Soup aux Fruits de Mer</h3>
+                            <span class="text-primary font-bold">10,500 FRW</span>
+                        </div>
+                        <p class="text-warm-gray mb-3">
+                            Soupe d'okra traditionnelle avec fruits de mer frais et épices authentiques
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="text-green-500 text-sm"><i class="fas fa-leaf"></i> Option végétarienne</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ogbono Soup -->
+                <div class="card menu-item-card" data-category="soupes">
+                    <div class="bg-jungle h-48 flex items-center justify-center">
+                        <i class="fas fa-bowl-food text-6xl text-golden"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-montserrat font-bold text-jungle">Ogbono Soup</h3>
+                            <span class="text-primary font-bold">9,000 FRW</span>
+                        </div>
+                        <p class="text-warm-gray mb-3">
+                            Soupe épaisse aux graines d'ogbono, viande et plantain
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="text-orange-500 text-sm"><i class="fas fa-pepper-hot"></i> Moyennement épicé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Plantain Frit -->
+                <div class="card menu-item-card" data-category="vegetarien">
+                    <div class="bg-golden h-48 flex items-center justify-center">
+                        <i class="fas fa-seedling text-6xl text-jungle"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-montserrat font-bold text-jungle">Plantain Frit</h3>
+                            <span class="text-primary font-bold">3,500 FRW</span>
+                        </div>
+                        <p class="text-warm-gray mb-3">
+                            Bananes plantain mûres frites à la perfection, accompagnement idéal
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="text-green-500 text-sm"><i class="fas fa-leaf"></i> Végétarien</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="py-20 bg-warm-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title font-playfair">Galerie</h2>
+                <p class="text-lg text-warm-gray">Découvrez l'ambiance chaleureuse et nos délicieux plats</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item fade-in">
+                    <img src="https://rwanda.tortoisepath.com/wp-content/uploads/2024/04/Jollof-Kigali-Kigali-Rwanda-TortoisePathcom-5-jpeg.webp" 
+                         alt="Plat signature Jollof Kigali">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://rwanda.tortoisepath.com/wp-content/uploads/2024/04/Jollof-Kigali-Kigali-Rwanda-TortoisePathcom-2-jpeg.webp" 
+                         alt="Intérieur du restaurant">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://www.newtimes.co.rw/uploads/imported_images/files/main/articles/2022/03/30/a-client-during-the-lunch-time-while-enjoying-jollof-rice-and-chicken-meat-at-jollof-kigali-a-nigerian-cuisine-restaurant-.craish-bahizi.jpg" 
+                         alt="Client savourant le jollof rice">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://rwanda.tortoisepath.com/wp-content/uploads/2024/04/Jollof-Kigali-Kigali-Rwanda-TortoisePathcom-3-jpeg.webp" 
+                         alt="Ambiance du restaurant">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://www.theeastafrican.co.ke/resource/image/3583430/portrait_ratio1x1/1600/1600/c1629fb308559d7e5b552ff981524658/Tw/jollof-rice.jpg" 
+                         alt="Jollof rice traditionnel">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://rwanda.tortoisepath.com/wp-content/uploads/2024/04/Jollof-Kigali-Kigali-Rwanda-TortoisePathcom-14-jpeg.webp" 
+                         alt="Cuisine nigériane authentique">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title font-playfair">Ce que disent nos clients</h2>
+                <p class="text-lg text-warm-gray">Des avis authentiques de nos clients satisfaits</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial fade-in">
+                    <div class="rating mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="mb-4 italic">
+                        "J'ai eu mon premier repas nigérian à Kigali dans ce restaurant. Le service était rapide. 
+                        Lily était ma serveuse ; une dame très agréable qui m'a engagé dans une discussion. 
+                        Ambiance très accueillante, atmosphère sophistiquée et amicale. C'est l'endroit pour 
+                        une expérience sophistiquée de jollof rice."
+                    </p>
+                    <div class="font-semibold text-jungle">- Ndidi Ezeabasili</div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="rating mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="mb-4 italic">
+                        "C'était formidable de voir des Nigérians à Kigali. J'ai découvert leur page sur Instagram 
+                        et j'ai immédiatement commandé du jollof rice, de l'okro aux fruits de mer et du garri. 
+                        J'ai visité leur magasin deux jours après. J'ai rencontré plusieurs gars nigérians là-bas. 
+                        C'était cool."
+                    </p>
+                    <div class="font-semibold text-jungle">- Saheed Olubode</div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="rating mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <p class="mb-4 italic">
+                        "La nourriture ici est exceptionnelle ! J'ai savouré un délicieux repas de riz blanc, 
+                        soupe de poisson au poivre et plantain. Après avoir enduré des plats fades ailleurs, 
+                        cette expérience savoureuse était vraiment satisfaisante. L'équipe est amicale, 
+                        bien que ma commande ait pris 30 minutes à arriver."
+                    </p>
+                    <div class="font-semibold text-jungle">- Adam-Ola Ajayi</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Événements -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4 text-center text-white">
+            <div class="fade-in">
+                <h2 class="section-title font-playfair text-white">Événements Spéciaux</h2>
+                <p class="text-xl mb-8">Découvrez nos soirées nigérianes et offres spéciales</p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                    <div class="bg-white text-jungle p-8 rounded-lg">
+                        <i class="fas fa-music text-4xl text-golden mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Soirées Nigérianes</h3>
+                        <p class="mb-4">Musique live, DJ et danse traditionnelle tous les vendredis soirs</p>
+                        <span class="text-primary font-bold">19h - 23h</span>
+                    </div>
+                    
+                    <div class="bg-white text-jungle p-8 rounded-lg">
+                        <i class="fas fa-cocktail text-4xl text-golden mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Happy Hour</h3>
+                        <p class="mb-4">Promotions sur toutes les boissons et petites assiettes</p>
+                        <span class="text-primary font-bold">17h - 19h</span>
+                    </div>
+                    
+                    <div class="bg-white text-jungle p-8 rounded-lg">
+                        <i class="fas fa-utensils text-4xl text-golden mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Buffet Dominical</h3>
+                        <p class="mb-4">Formule découverte avec tous nos plats traditionnels</p>
+                        <span class="text-primary font-bold">12h - 16h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Réservation -->
+    <section id="contact" class="py-20 bg-warm-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="section-title font-playfair">Contact & Réservation</h2>
+                <p class="text-lg text-warm-gray">Réservez votre table ou contactez-nous</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-playfair font-bold text-jungle mb-6">Réserver une table</h3>
+                        <form class="space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Nom complet" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary outline-none">
+                                <input type="email" placeholder="Email" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary outline-none">
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="tel" placeholder="Téléphone" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary outline-none">
+                                <select class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary outline-none">
+                                    <option>Nombre de personnes</option>
+                                    <option>1-2 personnes</option>
+                                    <option>3-4 personnes</option>
+                                    <option>5-8 personnes</option>
+                                    <option>Plus de 8 personnes</option>
+                                </select>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="date" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary outline-none">
+                                <input type="time" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary outline-none">
+                            </div>
+                            <textarea placeholder="Demandes spéciales (allergies, occasion spéciale, etc.)" 
+                                      rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary outline-none"></textarea>
+                            <button type="submit" class="btn-primary w-full">
+                                <i class="fas fa-calendar-check mr-2"></i>Confirmer la réservation
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="space-y-6">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-bold text-jungle mb-4">Informations pratiques</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary w-6"></i>
+                                    <span>KG 18 Ave 7, Remera, Kigali, Rwanda</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone text-primary w-6"></i>
+                                    <span>+250 788 500 171</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-clock text-primary w-6"></i>
+                                    <span>Lundi - Dimanche : 12h00 - 23h00</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fab fa-instagram text-primary w-6"></i>
+                                    <span>@jollofkigali</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card p-6">
+                            <h3 class="text-xl font-bold text-jungle mb-4">Services disponibles</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="flex items-center">
+                                    <i class="fas fa-utensils text-golden mr-2"></i>
+                                    <span>Sur place</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-shopping-bag text-golden mr-2"></i>
+                                    <span>À emporter</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-motorcycle text-golden mr-2"></i>
+                                    <span>Livraison</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-users text-golden mr-2"></i>
+                                    <span>Buffet groupe</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Google Maps -->
+                        <div class="card overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.5089835982547!2d30.109622314699477!3d-1.9591138371734866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca7c3cf4af85b%3A0x8b4de60856a661bc!2sJollof%20Kigali!5e0!3m2!1sen!2sus!4v1640995200000!5m2!1sen!2sus" 
+                                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-jungle text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Jollof Kigali</h3>
+                    <p class="mb-4">Saveurs authentiques du Nigeria au cœur de Kigali depuis 2019</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/jollofkigali/" class="text-golden hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-golden hover:text-white">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="hover:text-golden">Accueil</a></li>
+                        <li><a href="#apropos" class="hover:text-golden">À propos</a></li>
+                        <li><a href="#menu" class="hover:text-golden">Menu</a></li>
+                        <li><a href="#contact" class="hover:text-golden">Réservation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <div class="space-y-2">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>KG 18 Ave 7, Remera, Kigali</p>
+                        <p><i class="fas fa-phone mr-2"></i>+250 788 500 171</p>
+                        <p><i class="fas fa-clock mr-2"></i>12h00 - 23h00 (7j/7)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-8 text-center">
+                <p>&copy; 2025 Jollof Kigali. Tous droits réservés. | Cuisine nigériane authentique à Kigali</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Reservation Button -->
+    <a href="#contact" class="floating-btn">
+        <i class="fas fa-calendar-alt mr-2"></i>Réserver
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Menu filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                menuItems.forEach(item => {
+                    if (filter === 'all') {
+                        item.style.display = 'block';
+                    } else {
+                        const categories = item.getAttribute('data-category').split(' ');
+                        if (categories.includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre réservation ! Nous vous contacterons bientôt pour confirmer votre table.');
+        });
+
+        // Gallery lightbox effect (simple version)
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const lightbox = document.createElement('div');
+                lightbox.className = 'fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 cursor-pointer';
+                lightbox.innerHTML = `<img src="${img.src}" alt="${img.alt}" class="max-w-full max-h-full object-contain">`;
+                lightbox.addEventListener('click', () => lightbox.remove());
+                document.body.appendChild(lightbox);
+            });
+        });
+    </script>
+</body>
+</html>
